@@ -1,7 +1,0 @@
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.Tab?>
-
-<TabPane fx:controller="MainController" fx:id="tabPane"
-         xmlns:fx="http://javafx.com/fxml">
-    <Tab fx:id="presetTab" text="Preset Queries"/>
-</TabPane>
