@@ -79,6 +79,7 @@ public class ConstraintHandler {
         constraint = constraint.substring(constraint.indexOf(' ')+1);
         String operator = constraint.substring(0, constraint.indexOf(' '));
         constraint = constraint.substring(constraint.indexOf(' ')+1);
+        //TODO: Move comparable checks to Util file
         switch(operator.toUpperCase()) {
             case "=":
                 if(constraint.equals("now()")) {

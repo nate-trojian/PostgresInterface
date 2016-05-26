@@ -20,20 +20,24 @@ public class Database {
     }
 
     public static boolean connect() {
-        return connect("reference.conf");
+        return connect("application.conf");
     }
 
     public static boolean connect(String confFile) {
         if(con == null) {
             Config conf;
             try {
-                conf = ConfigFactory.load(confFile);
+                conf = ConfigUtil.getConf();
+            } catch(IllegalStateException e) {
+                conf = ConfigUtil.load(confFile);
+            }
+            try {
                 String host = conf.getString("database.host");
                 String port = conf.getString("database.port");
                 String dbName = conf.getString("database.name");
                 String url = "jdbc:postgresql://" + host + (port == null? "":":"+port) + "/" + dbName;
-                String dbUser = conf.getString("user.name");
-                String dbPassword = conf.getString("user.password");
+                String dbUser = conf.getString("database.user.name");
+                String dbPassword = conf.getString("database.user.password");
                 con = DriverManager.getConnection(url, dbUser, dbPassword);
                 return true;
             } catch(SQLException e) {

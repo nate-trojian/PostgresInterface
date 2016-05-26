@@ -8,7 +8,7 @@ public class Main extends Application {
     public static final Double WINDOW_WIDTH = 800d, WINDOW_HEIGHT = 600d;
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
         primaryStage.setTitle("Project 3: Photography Studio");
         primaryStage.setScene(new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT));
@@ -17,7 +17,8 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        Database.connect();
+        if(args.length == 0) Database.connect();
+        else Database.connect(args[0]);
         launch(args);
     }
 }
